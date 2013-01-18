@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+
+<ui:composition template="commonlayout.xhtml">
+  <ui:define name="content">
+
+  <h:panelGroup rendered="#{surveyResponseController.readOnly}">
+	<table align="center">
+		<tr><td colspan="2">#{msg.takefewminutes}</td></tr>
+			<tr>
+				<td><b>#{msg.requestid}</b></td><td><h:outputText value="#{surveyResponseController.idString}"/></td>
+			</tr>
+			<tr>
+				<td><b>#{msg.requestedby}</b></td><td><h:outputText value="#{surveyResponseController.owner}"/></td>
+			</tr>
+			<tr>
+				<td><b>#{msg.requestfor}</b></td><td><h:outputText value="#{surveyResponseController.you}"/></td>
+			</tr>
+			<tr>
+				<td><b>#{msg.request}</b></td><td><h:outputText value="#{surveyResponseController.subject}"/></td>
+			</tr>
+			<tr>
+				<td><div align="center">#{msg.howwellquestion}</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">#{msg.overallratingquestion}</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">#{msg.wouldyourecommendquestion}</div></td>
+			</tr>
+			<tr>
+				<td><div align="center">#{surveyResponseController.subject}</div></td>
+			</tr>
+			
+			<h:inputHidden id="key" value="#{surveyResponseController.key}" />
+		</table>
+  </h:panelGroup>
+
+  <h:panelGroup rendered="#{!surveyResponseController.readOnly}">
+
+		<script type="text/javascript" src="js/ckeditor/ckeditor.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#tabs').tabs();
+		        CKEDITOR.replace(($('#ckeditorparent'))[0].firstChild.id);
+			});
+		</script>
+
+    <h:form>
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1">#{msg.intro}</a></li>
+				<li><a href="#tabs-2">#{msg.ratings}</a></li>
+				<li><a href="#tabs-3">#{msg.comments}</a></li>
+				<li><a href="#tabs-4">#{msg.submit}</a></li>
+			</ul>
+			<div id="tabs-1">
+				<table align="center">
+					<tr><td colspan="2">#{msg.takefewminutes}</td></tr>
+					<tr>
+						<td><b>#{msg.requestid}</b></td><td><h:outputText value="#{surveyResponseController.idString}"/></td>
+					</tr>
+					<tr>
+						<td><b>#{msg.requestedby}</b></td><td><h:outputText value="#{surveyResponseController.owner}"/></td>
+					</tr>
+					<tr>
+						<td><b>#{msg.requestfor}</b></td><td><h:outputText value="#{surveyResponseController.you}"/></td>
+					</tr>
+					<tr>
+						<td><b>#{msg.request}</b></td><td><h:outputText value="#{surveyResponseController.subject}"/></td>
+					</tr>
+					<h:inputHidden id="key" value="#{surveyResponseController.key}" />
+				</table>
+			
+			</div>
+			<div id="tabs-2">
+				<div align="center">#{msg.howwellquestion}<br/>
+					<h:selectOneMenu value="#{surveyResponseController.question1}" > 
+						<f:selectItem itemValue="0" itemLabel="#{msg.pleaseselectanswer}" />
+						<f:selectItem itemValue="1" itemLabel="#{msg.extremelywell}" />
+						<f:selectItem itemValue="2" itemLabel="#{msg.verywell}" />
+						<f:selectItem itemValue="3" itemLabel="#{msg.notwell}" />
+						<f:selectItem itemValue="4" itemLabel="#{msg.notatall}" />
+					</h:selectOneMenu>
+					<br/>
+				</div>
+				
+				<div align="center">#{msg.overallratingquestion}<br/>
+					<h:selectOneMenu value="#{surveyResponseController.question2}" > 
+						<f:selectItem itemValue="0" itemLabel="#{msg.pleaseselectanswer}" />
+						<f:selectItem itemValue="1" itemLabel="#{msg.excellent}" />
+						<f:selectItem itemValue="2" itemLabel="#{msg.good}" />
+						<f:selectItem itemValue="3" itemLabel="#{msg.average}" />
+						<f:selectItem itemValue="4" itemLabel="#{msg.poor}" />
+					</h:selectOneMenu>
+					<br/>
+				</div>
+				
+				<div align="center">#{msg.wouldyourecommendquestion}<br/>
+					<h:selectOneMenu value="#{surveyResponseController.question3}" > 
+						<f:selectItem itemValue="0" itemLabel="#{msg.pleaseselectanswer}" />
+						<f:selectItem itemValue="1" itemLabel="#{msg.yes}" />
+						<f:selectItem itemValue="2" itemLabel="#{msg.no}" />
+					</h:selectOneMenu>
+					<br/>
+				</div>
+			
+			</div>
+			<div id="tabs-3">
+		    	<ui:include  src="tagmagic.xhtml"/>
+			   <div id="ckeditorparent"><h:inputTextarea value="#{surveyResponseController.comment}" id="editor1"></h:inputTextarea></div>
+			  
+			</div>
+			<div id="tabs-4">
+				#{msg.pleasereviewfeedback}
+				<div align="right" id="submitbutton">
+				<h:commandButton value="#{msg.submit}" action="#{surveyResponseController.submit}"/>
+				</div>			
+
+				
+			</div>
+		</div>
+	</h:form>
+
+  </h:panelGroup>
+	
+  </ui:define>
+</ui:composition>
+	
+</h:body>
+</html>
+
+

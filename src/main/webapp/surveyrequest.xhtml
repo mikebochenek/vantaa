@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<h:body>
+
+<ui:composition template="commonlayout.xhtml">
+   <ui:define name="content">
+
+
+    <h:form>
+    	<div>#{msg.instructions}</div> <br/><br/>
+    
+    	<table>
+    	    <tr>
+				<td><h:outputLabel value="#{msg.owner}"/></td>
+				<td><h:inputText size="60" id="email" value="#{surveyRequestController.owner}" label="#{msg.owner} Email" required="true" validatorMessage="#{msg.invalidvalue}">
+    				<f:validateRegex pattern="([\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z])*" /></h:inputText></td>
+				<td><h:message style="color: red;" for="email" /></td>
+    		</tr>
+    	
+    	    <tr>
+				<td><h:outputLabel value="#{msg.subject}"/></td>
+				<td><h:inputText size="60" id="subject" value="#{surveyRequestController.subject}" label="#{msg.subject}" required="true" validatorMessage="#{msg.invalidvalue}">
+    				<f:validateRegex pattern="[a-zA-Z]+" /></h:inputText></td>
+				<td><h:message style="color: red;" for="subject" /></td>
+				
+    		</tr>
+    		<tr>
+				<td><h:outputLabel value="#{msg.participant1}"/></td>
+				<td><h:inputText size="60" id="email1" value="#{surveyRequestController.par1}" label="#{msg.participant1} Email" validatorMessage="#{msg.invalidvalue}">
+    				<f:validateRegex pattern="([\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z])*" /></h:inputText></td>
+				<td><h:message style="color: red;" for="email1" /></td>
+    		</tr>
+    		<tr>
+				<td><h:outputLabel value="#{msg.participant2}"/></td>
+				<td><h:inputText size="60" id="email2" value="#{surveyRequestController.par2}" label="#{msg.participant2} Email" validatorMessage="#{msg.invalidvalue}">
+    				<f:validateRegex pattern="([\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z])*" /></h:inputText></td>
+				<td><h:message style="color: red;" for="email2" /></td>
+    		</tr>
+    		<tr>
+				<td><h:outputLabel value="#{msg.participant3}"/></td>
+				<td><h:inputText size="60" id="email3" value="#{surveyRequestController.par3}" label="#{msg.participant3} Email" validatorMessage="#{msg.invalidvalue}">
+    				<f:validateRegex pattern="([\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z])*" /></h:inputText></td>
+				<td><h:message style="color: red;" for="email3" /></td>
+    		</tr>
+    		<tr>
+				<td><h:outputLabel value="#{msg.participant4}"/></td>
+				<td><h:inputText size="60" id="email4" value="#{surveyRequestController.par4}" label="#{msg.participant4} Email" validatorMessage="#{msg.invalidvalue}">
+    				<f:validateRegex pattern="([\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z])*" /></h:inputText></td>
+				<td><h:message style="color: red;" for="email4" /></td>
+    		</tr>
+    		<tr>
+				<td><h:outputLabel value="#{msg.participant5}"/></td>
+				<td><h:inputText size="60" id="email5" value="#{surveyRequestController.par5}" label="#{msg.participant5} Email" validatorMessage="#{msg.invalidvalue}">
+    				<f:validateRegex pattern="([\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z])*" /></h:inputText></td>
+				<td><h:message style="color: red;" for="email5" /></td>
+    		</tr>
+    		<tr>
+				<td><h:outputLabel value="#{msg.participant6}"/></td>
+				<td><h:inputText size="60" id="email6" value="#{surveyRequestController.par6}" label="#{msg.participant6} Email" validatorMessage="#{msg.invalidvalue}">
+    				<f:validateRegex pattern="([\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z])*" /></h:inputText></td>
+				<td><h:message style="color: red;" for="email6" /></td>
+    		</tr>
+    		<tr>
+				<td><h:outputLabel value="#{msg.participant7}"/></td>
+				<td><h:inputText size="60" id="email7" value="#{surveyRequestController.par7}" label="#{msg.participant7} Email" validatorMessage="#{msg.invalidvalue}">
+    				<f:validateRegex pattern="([\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z])*" /></h:inputText></td>
+				<td><h:message style="color: red;" for="email7" /></td>
+    		</tr>
+    		<tr>
+				<td><h:outputLabel value="#{msg.participant8}"/></td>
+				<td><h:inputText size="60" id="email8" value="#{surveyRequestController.par8}" label="#{msg.participant8} Email" validatorMessage="#{msg.invalidvalue}">
+    				<f:validateRegex pattern="([\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z])*" /></h:inputText></td>
+				<td><h:message style="color: red;" for="email8" /></td>
+    		</tr>
+    		<tr>
+				<td><h:outputLabel value="#{msg.participant9}"/></td>
+				<td><h:inputText size="60" id="email9" value="#{surveyRequestController.par9}" label="#{msg.participant9} Email" validatorMessage="#{msg.invalidvalue}">
+    				<f:validateRegex pattern="([\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z])*" /></h:inputText></td>
+				<td><h:message style="color: red;" for="email9" /></td>
+    		</tr>
+    		<tr>
+				<td><h:outputLabel value="#{msg.participant10}"/></td>
+				<td><h:inputText size="60" id="email10" value="#{surveyRequestController.par10}" label="#{msg.participant10} Email" validatorMessage="#{msg.invalidvalue}">
+    				<f:validateRegex pattern="([\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z])*" /></h:inputText></td>
+				<td><h:message style="color: red;" for="email10" /></td>
+    		</tr>
+    	</table>
+		<div id="tabs">
+				<h:commandButton value="#{msg.create}" action="#{surveyRequestController.submit}"/>
+		</div>
+	</h:form>
+	
+  </ui:define>
+</ui:composition>
+
+</h:body>
+</html>
+
+

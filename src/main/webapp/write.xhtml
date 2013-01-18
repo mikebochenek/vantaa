@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<h:body>
+
+<ui:composition template="commonlayout.xhtml">
+   <ui:define name="content">
+     <script type="text/javascript" src="js/ckeditor/ckeditor.js"></script>
+     <script type="text/javascript">
+			$(function(){
+		        CKEDITOR.replace(($('#ckeditorparent'))[0].firstChild.id);
+			});
+     </script>
+
+     <h:form>
+    	<ui:include  src="tagmagic.xhtml"/>
+		<div id="ckeditorparent"><h:inputTextarea value="#{surveyResponseController.comment}" id="editor1"></h:inputTextarea></div>
+     </h:form>
+  </ui:define>
+</ui:composition>
+	
+</h:body>
+</html>
+
+

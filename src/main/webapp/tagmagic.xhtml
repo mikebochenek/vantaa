@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+<ui:composition>
+		<script type="text/javascript">
+			$(function(){
+				tm.postload();
+			});
+		</script>
+ <h:outputScript name="jsf.js" library="javax.faces"/> 
+
+  <table style="width='600px';">
+	<tr>
+		<td width="40px" align="left"><a href="" onclick="tm.prev_t(this); return false;"><img id="prev_t" src="img/arrow_left_g.png" 
+			onmouseover="tm.highlight(this); return false;" onmouseout="tm.unhighlight(this); return false;" 
+			height="40" width="50"/></a></td>
+		<td id="table_tag_id"></td>
+		<td width="40px" align="right"><a href="" onclick="tm.next_t(this); return false;"><img id="nxt_t" src="img/arrow_right_b.png" 
+			onmouseover="tm.highlight(this); return false;" onmouseout="tm.unhighlight(this); return false;" 
+			height="40" width="50"/></a></td>
+	</tr>
+	<tr>
+		<td width="40px" align="left"><a href="" onclick="tm.prev_s(this); return false;"><img id="prev_s" src="img/arrow_left_g.png" 
+			onmouseover="tm.highlight(this); return false;" onmouseout="tm.unhighlight(this); return false;" 
+			height="40" width="50"/></a></td>
+		<td id="table_sent_id"><div>none</div></td>
+		<td width="40px" align="right"><a href="" onclick="tm.next_s(this); return false;"><img id="nxt_s" src="img/arrow_right_g.png"
+			onmouseover="tm.highlight(this); return false;" onmouseout="tm.unhighlight(this); return false;" 
+			height="40" width="50"/></a></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><div style="color:#2472c3" align="center" id="placetext" onclick="tm.place(this); return false;"
+			onmouseover="tm.highlightplace(); return false;" onmouseout="tm.unhighlightplace(); return false;"><b>#{msg.placetextbelow}</b></div></td>
+		<td></td>
+	</tr>
+  </table>
+
+	<div style="display:none;" id="tabledata">
+    	<ui:repeat value="#{recommendationController.tags}" var="tag">
+    		<ul><h:outputText value="#{tag}" />
+    	
+		    	<ui:repeat value="#{recommendationController.getSentences(tag)}" var="stag">
+					<li><h:outputText value="#{stag}" /></li>
+				</ui:repeat> 
+		   		
+		   	</ul>
+    	</ui:repeat>
+	</div>
+
+</ui:composition>
+
+</body>
+</html>
+
+
