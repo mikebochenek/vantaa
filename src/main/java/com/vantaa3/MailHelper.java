@@ -1,3 +1,6 @@
+/*
+ * Copyright (c) 2013 Michael Bochenek 
+ */
 package com.vantaa3;
 
 public class MailHelper {
