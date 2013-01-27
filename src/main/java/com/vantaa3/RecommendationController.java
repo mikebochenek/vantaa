@@ -10,9 +10,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "recommendationController")
 @RequestScoped
@@ -35,6 +37,15 @@ public class RecommendationController {
 		return list.getTags(5, 100); //TODO
 	}
 	
+	/**
+	 * trying to fix java.lang.IllegalStateException: Cannot create a session after the response has been committed
+	 * 	http://stackoverflow.com/questions/7433575/cannot-create-a-session-after-the-response-has-been-committed
+	 */
+	@PostConstruct
+	void initialiseSession() {
+		FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+	}
+		
 	public HashMap<String, List<String>> getTabularData() {
 		return list.getTabularData(5,  10);
 	}

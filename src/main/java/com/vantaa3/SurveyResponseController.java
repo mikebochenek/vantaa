@@ -99,7 +99,7 @@ public class SurveyResponseController {
      */
     public boolean isReadOnly() {
     	boolean val = getSurveyResponse() == null ? false : getSurveyResponse().getSubmitDate() != null;
-    	logger.info("isreadonly " + val);
+    	//logger.info("isreadonly " + val);
     	return val;
     }
     
