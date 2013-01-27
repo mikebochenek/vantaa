@@ -3,11 +3,9 @@
  */
 package com.vantaa3;
 
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
@@ -16,9 +14,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-@ManagedBean(name = "recommendationController")
+@ManagedBean(name = "statusController")
 @RequestScoped
-public class RecommendationController {
+public class StatusController {
 	private Logger logger = Logger.getLogger(this.getClass().getName()); 
 
 	@EJB
@@ -30,18 +28,15 @@ public class RecommendationController {
 		return recommendationEJB.loadAll();
 	}
 	
-	public List<String> getTags() {
-		if (list == null) {
-			initList();
-		}
-		counter++;
-		return list.getTags(5, 100); //TODO
+	public int getListSize() {
+		return getAll().size();
 	}
-	
-	private static long counter = 0l;
-	public long getCounter() { return counter; }
-	
 
+	public String getUptime() {
+		return uptime.toGMTString();
+	}
+	private static Date uptime = Calendar.getInstance().getTime();
+	
 	/**
 	 * trying to fix java.lang.IllegalStateException: Cannot create a session after the response has been committed
 	 * 	http://stackoverflow.com/questions/7433575/cannot-create-a-session-after-the-response-has-been-committed
@@ -50,37 +45,8 @@ public class RecommendationController {
 	void initialiseSession() {
 		FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 	}
-		
-	public HashMap<String, List<String>> getTabularData() {
-		return list.getTabularData(5,  10);
-	}
 	
-	public List<String> getSentences(String tag) {
-		long start = System.currentTimeMillis();
-		//logger.warning(" getting sentences for tag: " + tag);
-		if (list == null) {
-			initList();
-		}
-		
-		List<String> retVal = list.getRecommendationSentence(tag, 5, 100);
-		
-		if (retVal != null && retVal.size() > 0) {
-			currentSentence = retVal.get(0);
-		}
-		
-		if (System.currentTimeMillis() - start > 0) {
-			logger.info("getSentences ms:" + (System.currentTimeMillis() - start));
-		}
-		
-		return retVal;
-	}
-	
-	private String currentSentence;
-	public String getCurrentSentence() {
-		return currentSentence;
-	}
-	
-	private void initList() {
+	public long getTimeInitList() {
 		long start = System.currentTimeMillis();
 		list = new RankedRecommendationList();
 		
@@ -94,8 +60,6 @@ public class RecommendationController {
 		
 		list.randomizeAndTrim();
 		
-		if (System.currentTimeMillis() - start > 0) {
-			logger.info("initList ms:" + (System.currentTimeMillis() - start));
-		}
+		return (System.currentTimeMillis() - start);
 	}
 }
