@@ -88,7 +88,7 @@ public class RecommendationController {
 		for (Recommendation r : all) {
 			String tags[] = r.getTags().split(",");
 			for (String tag : tags) {
-				list.add(tag, r.getSentence(), r.getRating());
+				list.add(tag.trim(), r.getSentence(), r.getRating());
 			}
 		}
 		
