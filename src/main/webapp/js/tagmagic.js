@@ -102,7 +102,7 @@ var tm =
     
     place : function(elem) {
 		grandkids = $(tm.kids[tm.cTagIdx]).children();
-		newTxt = grandkids[tm.cSentenceIdx].firstChild.data;
+		newTxt = '  ' + grandkids[tm.cSentenceIdx].firstChild.data;
     	CKEDITOR.instances[($('#ckeditorparent'))[0].firstChild.id].insertText(newTxt);
     },
     
