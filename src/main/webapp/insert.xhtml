@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<h:body>
+
+<ui:composition template="commonlayout.xhtml">
+   <ui:define name="content">
+    <h:form>
+    	<div>insert data directly and carefully...</div> <br/><br/>
+    
+    	<table>
+    	    <tr>
+				<td><h:outputLabel value="id"/></td>
+				<td>#{insertController.recommendation.id}</td>
+			</tr>
+    	    <tr>
+				<td><h:outputLabel value="rating"/></td>
+				<td><h:inputText size="20" value="#{insertController.recommendation.rating}"/></td>
+			</tr>
+    	    <tr>
+				<td><h:outputLabel value="tags"/></td>
+				<td><h:inputText required="true" size="60" value="#{insertController.recommendation.tags}"/></td>
+			</tr>
+    	    <tr>
+				<td><h:outputLabel value="sentence"/></td>
+				<td><h:inputTextarea required="true" cols="80" rows="5" value="#{insertController.recommendation.sentence}"/></td>
+			</tr>
+			
+			<tr>
+				<td></td>
+				<td>
+					<h:commandButton value="Create" action="#{insertController.create}"/>
+				</td>
+			</tr>
+		</table>
+		
+	</h:form>
+  </ui:define>
+</ui:composition>
+
+</h:body>
+</html>

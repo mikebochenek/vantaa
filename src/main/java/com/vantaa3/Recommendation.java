@@ -63,4 +63,10 @@ public class Recommendation implements Serializable {
     this.tags = tags;
   }
 
+  @Override
+  public String toString() {
+	return "Recommendation [id=" + id + ", rating=" + rating + ", sentence="
+			+ sentence + ", locale=" + locale + ", tags=" + tags + "]";
+  }
+
 }

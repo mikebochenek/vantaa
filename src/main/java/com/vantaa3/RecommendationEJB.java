@@ -30,5 +30,10 @@ public class RecommendationEJB {
     	Query query = em.createQuery("select r from Recommendation r ");
     	return query.getResultList();
     }
+    
+    public Recommendation create(Recommendation r) {
+    	em.persist(r);
+    	return r;
+    }
 
 }
