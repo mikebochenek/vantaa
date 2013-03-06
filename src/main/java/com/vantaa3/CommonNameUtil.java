@@ -3,6 +3,8 @@
  */
 package com.vantaa3;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class CommonNameUtil {
@@ -59,6 +61,27 @@ public class CommonNameUtil {
 		return company[random.nextInt(company.length)].toUpperCase();
 	}
 	
+	private static List<String> convertArray(String[] names) {
+		List<String> list = new ArrayList<String>();
+		for (String name : names) {
+			name = name.toLowerCase();
+			name = name.replace(name.charAt(0), Character.toUpperCase(name.charAt(0)));
+			list.add(name);
+		}
+		return list;
+	}
+
+	public static List<String> getMales() {
+		return convertArray(male);
+	}
 	
-	
+	public static List<String> getFemales() {
+		return convertArray(female);
+	}
+
+	public static List<String> getNames() {
+		List<String> list = getFemales();
+		list.addAll(getMales());
+		return list;
+	}
 }

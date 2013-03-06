@@ -22,11 +22,12 @@ public class RecommendationEJB {
     
     public Recommendation load(int id) {
     	Recommendation r = em.find(Recommendation.class, id);
-    	//logger.warning("loading  id:" + id + " r.getId(): " + (r==null ? "null" : r.getId()));
+    	logger.fine("loading id:" + id + " r.getId(): " + (r==null ? "null" : r.getId()));
     	return r;
     }
     
-    public List<Recommendation> loadAll() {
+    @SuppressWarnings("unchecked")
+	public List<Recommendation> loadAll() {
     	Query query = em.createQuery("select r from Recommendation r ");
     	return query.getResultList();
     }
@@ -34,6 +35,15 @@ public class RecommendationEJB {
     public Recommendation create(Recommendation r) {
     	em.persist(r);
     	return r;
+    }
+    
+    public Recommendation update(Recommendation r) {
+    	em.merge(r);
+    	return r;
+    }
+    
+    public void delete(Recommendation r) {
+    	em.remove(em.find(Recommendation.class, r.getId()));
     }
 
 }
