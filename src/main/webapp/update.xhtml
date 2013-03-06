@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<h:body>
+
+<ui:composition template="commonlayout.xhtml">
+   <ui:define name="content">
+    <h:form>
+    	<div>update data directly and carefully...</div> <br/><br/>
+    
+    	<table>
+    	    <tr>
+				<td><h:outputLabel value="id"/></td>
+				<td><h:inputText size="20" value="#{updateController.recommendation.id}"/></td>
+			</tr>
+    	    <tr>
+				<td><h:outputLabel value="rating"/></td>
+				<td><h:inputText size="20" value="#{updateController.recommendation.rating}"/></td>
+			</tr>
+    	    <tr>
+				<td><h:outputLabel value="tags"/></td>
+				<td><h:inputText size="60" value="#{updateController.recommendation.tags}"/></td>
+			</tr>
+    	    <tr>
+				<td><h:outputLabel value="sentence"/></td>
+				<td><h:inputTextarea cols="80" rows="5" value="#{updateController.recommendation.sentence}"/></td>
+			</tr>
+			
+			<tr>
+				<td></td>
+				<td>
+					<h:commandButton value="Delete" action="#{updateController.delete}"/>
+					<h:commandButton value="Update" action="#{updateController.update}"/>
+					<h:commandButton value="Load" action="#{updateController.load}"/>
+				</td>
+			</tr>
+		</table>
+		
+	</h:form>
+  </ui:define>
+</ui:composition>
+
+</h:body>
+</html>
