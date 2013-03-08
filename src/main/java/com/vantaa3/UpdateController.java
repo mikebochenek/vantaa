@@ -18,27 +18,49 @@ public class UpdateController {
 	private RecommendationEJB recommendationEJB;
 
 	private Recommendation recommendation;
+	
+	private final String nextJSFPage = "update.faces";
 
 	public String update() {
-		recommendationEJB.update(recommendation);
+		recommendationEJB.update(getRecommendation());
 		logger.info("updated " + recommendation.toString());
-		return "update.faces";
+		return nextJSFPage;
 	}
 	
 	public String load() {
-		int id = recommendation.getId();
+		int id = getRecommendation().getId();
 		logger.info("calling load by id=" + id);
 		recommendation = recommendationEJB.load(id);
 		if (recommendation == null) {
 			logger.info("hmmm... somehow didn't find by id=" + id);
 		}
-		return "update.faces";
+		return nextJSFPage;
+	}
+	
+	public String next() {
+		int id = recommendation.getId();
+		logger.info("calling next! id=" + id);
+		for (int i = 1; i < 10; i++) {
+			recommendation = recommendationEJB.load(id + i);
+			if (recommendation != null && recommendation.getId() == (id + i)) break;
+		}
+		return nextJSFPage;
+	}
+	
+	public String previous() {
+		int id = getRecommendation().getId();
+		logger.info("calling previous! id=" + id);
+		for (int i = 1; i < 10; i++) {
+			recommendation = recommendationEJB.load(id - i);
+			if (recommendation != null && recommendation.getId() == (id - i)) break;
+		}
+		return nextJSFPage;
 	}
 	
 	public String delete() {
-		logger.info("calling delete for id=" + recommendation.getId());
-		recommendationEJB.delete(recommendation);
-		return "update.faces";
+		logger.info("calling delete for id=" + getRecommendation().getId());
+		recommendationEJB.delete(getRecommendation());
+		return nextJSFPage;
 	}
 	
 	public Recommendation getRecommendation() {

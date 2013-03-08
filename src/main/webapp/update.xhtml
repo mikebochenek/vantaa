@@ -33,9 +33,11 @@
 			<tr>
 				<td></td>
 				<td>
-					<h:commandButton value="Delete" action="#{updateController.delete}"/>
-					<h:commandButton value="Update" action="#{updateController.update}"/>
-					<h:commandButton value="Load" action="#{updateController.load}"/>
+					<h:commandButton accesskey="n" value="Next" action="#{updateController.next}"/>
+					<h:commandButton accesskey="p" value="Previous" action="#{updateController.previous}"/>
+					<h:commandButton accesskey="l" value="Load" action="#{updateController.load}"/>
+					<h:commandButton accesskey="u" value="Update" action="#{updateController.update}"/>
+					<h:commandButton accesskey="d" value="Delete" action="#{updateController.delete}"/>
 				</td>
 			</tr>
 		</table>
