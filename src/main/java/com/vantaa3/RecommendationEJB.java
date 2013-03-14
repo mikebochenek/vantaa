@@ -26,9 +26,17 @@ public class RecommendationEJB {
     	return r;
     }
     
+    /**
+     * In general, this loadAll is very inefficient, but it's a good chance to learn basic perf tips:
+     * http://arnosoftwaredev.blogspot.ch/2011/01/hibernate-performance-tips.html
+     * https://access.redhat.com/knowledge/docs/en-US/JBoss_Enterprise_Web_Platform/5/html/Hibernate_Annotations_Reference_Guide/entity-mapping-query.html
+     * @return list of recommendations
+     */
     @SuppressWarnings("unchecked")
 	public List<Recommendation> loadAll() {
     	Query query = em.createQuery("select r from Recommendation r ");
+    	query.setHint("org.hibernate.fetchSize", "100");
+    	query.setHint("org.hibernate.readOnly", "true");
     	return query.getResultList();
     }
     
