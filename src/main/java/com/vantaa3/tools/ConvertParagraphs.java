@@ -20,7 +20,7 @@ public class ConvertParagraphs {
 	public static void main(String[] args) {
 		try {
 			int counter = 0;
-			Scanner in = new Scanner(new FileReader("/tmp/input.txt"));
+			Scanner in = new Scanner(new FileReader("/home/mike/Dropbox/vantaa/vantaa3-notes/data/dataset6.txt"));
 			while (in.hasNextLine()) {
 				String line = in.nextLine();
 				if (line != null && line.length() > 1) {

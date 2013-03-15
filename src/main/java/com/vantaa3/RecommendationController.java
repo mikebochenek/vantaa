@@ -27,7 +27,7 @@ public class RecommendationController {
 	private RankedRecommendationList list;
 	
 	public List<Recommendation> getAll() {
-		return recommendationEJB.loadAll();
+		return recommendationEJB.loadAllWithTags();
 	}
 	
 	public List<String> getTags() {

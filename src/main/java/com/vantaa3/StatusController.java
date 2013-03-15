@@ -25,11 +25,15 @@ public class StatusController {
 	private RankedRecommendationList list;
 	
 	public List<Recommendation> getAll() {
-		return recommendationEJB.loadAll();
+		return recommendationEJB.loadAllWithTags();
 	}
 	
 	public int getListSize() {
 		return getAll().size();
+	}
+	
+	public int getTotalListSize() {
+		return recommendationEJB.loadAll().size();
 	}
 
 	public String getUptime() {

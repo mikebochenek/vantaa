@@ -39,7 +39,15 @@ public class RecommendationEJB {
     	query.setHint("org.hibernate.readOnly", "true");
     	return query.getResultList();
     }
-    
+
+    @SuppressWarnings("unchecked")
+	public List<Recommendation> loadAllWithTags() {
+    	Query query = em.createQuery("select r from Recommendation r where tags <> '' ");
+    	query.setHint("org.hibernate.fetchSize", "100");
+    	query.setHint("org.hibernate.readOnly", "true");
+    	return query.getResultList();
+    }
+
     public Recommendation create(Recommendation r) {
     	em.persist(r);
     	return r;
