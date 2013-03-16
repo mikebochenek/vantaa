@@ -67,10 +67,11 @@ public class Draft {
 	}
 	
 	private String trim(String t) {
-		if (t == null || t.length() <= 40) {
+		final int max = 40;
+		if (t == null || t.length() <= max) {
 			return t;
 		} else {
-			return t.substring(0, 40) + "...";
+			return t.substring(0, max) + "...";
 		}
 	}
 }
