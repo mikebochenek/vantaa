@@ -20,8 +20,7 @@ public class DraftEJB {
 
     public Draft update(Draft d) {
     	d.setCreateDate(new Date());
-    	em.merge(d);
-    	return d;
+    	return em.merge(d);
     }
 
 }
