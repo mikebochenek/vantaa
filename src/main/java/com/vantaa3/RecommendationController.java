@@ -54,7 +54,8 @@ public class RecommendationController {
 	
 	public List<String> getSentences(String tag) {
 		long start = System.currentTimeMillis();
-		//logger.warning(" getting sentences for tag: " + tag);
+		logger.finer(" getting sentences for tag: " + tag);
+
 		if (list == null) {
 			list = recommendationEJB.initList();
 		}
@@ -66,7 +67,7 @@ public class RecommendationController {
 		}
 		
 		if (System.currentTimeMillis() - start > 0) {
-			logger.info("getSentences ms:" + (System.currentTimeMillis() - start));
+			logger.finer("getSentences ms:" + (System.currentTimeMillis() - start));
 		}
 		
 		return retVal;

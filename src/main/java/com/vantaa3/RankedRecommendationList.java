@@ -46,7 +46,7 @@ public class RankedRecommendationList {
 	}
 
 	public List<String> getTags() {
-		return getTags(5, 1000);
+		return getTags(5, 1000); //TODO... think about this one carefully
 	}
 
 	public List<String> getTags(int minRating, int max) {
