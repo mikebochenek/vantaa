@@ -3,6 +3,7 @@
  */
 package com.vantaa3;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.ejb.EJB;
@@ -25,6 +26,31 @@ public class UpdateController {
 		recommendationEJB.update(getRecommendation());
 		logger.info("updated " + recommendation.toString());
 		return nextJSFPage;
+	}
+	
+	public String getAllTags() {
+		String s = "";
+		List<String> tags = recommendationEJB.initList().getTags(5, 100);
+		for (int i = 0; i < tags.size(); i++) {
+			s += tags.get(i) + "," + (i % 10 == 9 ? "\n" : "");
+		}
+		return s;
+	}
+	
+	public String getSuggestedTags() {
+		String suggestion = "";
+		
+		String sentence = getRecommendation().getSentence();
+		sentence = sentence == null ? "" : sentence.toLowerCase();
+		
+		List<String> tags = recommendationEJB.initList().getTags(5, 100);
+		for (String tag : tags) {
+			if (sentence.contains(tag)) {
+				suggestion += (suggestion.length() == 0 ? "" : ",") + tag;
+			}
+		}
+		
+		return suggestion;
 	}
 	
 	public String load() {

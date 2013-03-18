@@ -26,6 +26,10 @@
 				<td><h:inputText accesskey="t" size="60" value="#{updateController.recommendation.tags}"/></td>
 			</tr>
     	    <tr>
+				<td><h:outputLabel value="suggested tags"/></td>
+				<td><h:outputLabel title="#{updateController.allTags}" value="#{updateController.suggestedTags}"/></td>
+			</tr>
+    	    <tr>
 				<td><h:outputLabel value="sentence"/></td>
 				<td><h:inputTextarea accesskey="s" cols="80" rows="5" value="#{updateController.recommendation.sentence}"/></td>
 			</tr>
