@@ -44,7 +44,11 @@ public class RankedRecommendationList {
 		
 		return sentence.replaceAll("\\$COMPANY", CommonNameUtil.getRandomCompany());
 	}
-	
+
+	public List<String> getTags() {
+		return getTags(5, 1000);
+	}
+
 	public List<String> getTags(int minRating, int max) {
 		List<String> retVal = new ArrayList<String>();
 		
@@ -63,7 +67,6 @@ public class RankedRecommendationList {
 			} else {
 				intermediatery.put(key, tag);
 			}
-//			retVal.add(tag);
 		}
 
 

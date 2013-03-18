@@ -30,7 +30,7 @@ public class UpdateController {
 	
 	public String getAllTags() {
 		String s = "";
-		List<String> tags = recommendationEJB.initList().getTags(5, 100);
+		List<String> tags = recommendationEJB.initList().getTags();
 		for (int i = 0; i < tags.size(); i++) {
 			s += tags.get(i) + "," + (i % 10 == 9 ? "\n" : "");
 		}
@@ -43,7 +43,7 @@ public class UpdateController {
 		String sentence = getRecommendation().getSentence();
 		sentence = sentence == null ? "" : sentence.toLowerCase();
 		
-		List<String> tags = recommendationEJB.initList().getTags(5, 100);
+		List<String> tags = recommendationEJB.initList().getTags();
 		for (String tag : tags) {
 			if (sentence.contains(tag)) {
 				suggestion += (suggestion.length() == 0 ? "" : ",") + tag;

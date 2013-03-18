@@ -32,7 +32,7 @@ public class RecommendationController {
 			list = recommendationEJB.initList();
 		}
 		counter++;
-		return list.getTags(5, 100); //TODO
+		return list.getTags();
 	}
 	
 	private static long counter = 0l;

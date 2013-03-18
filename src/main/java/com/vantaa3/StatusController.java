@@ -38,7 +38,11 @@ public class StatusController {
 	public int getTotalListSize() {
 		return recommendationEJB.loadAll().size();
 	}
-	
+
+	public int getTagsSize() {
+		return recommendationEJB.initList().getTags().size();
+	}
+
 	public int getDraftSize() {
 		return draftEJB.loadAll().size();
 	}
