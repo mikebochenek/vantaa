@@ -32,7 +32,7 @@ public class RecommendationController {
 	
 	public List<String> getTags() {
 		if (list == null) {
-			initList();
+			list = recommendationEJB.initList();
 		}
 		counter++;
 		return list.getTags(5, 100); //TODO
@@ -59,7 +59,7 @@ public class RecommendationController {
 		long start = System.currentTimeMillis();
 		//logger.warning(" getting sentences for tag: " + tag);
 		if (list == null) {
-			initList();
+			list = recommendationEJB.initList();
 		}
 		
 		List<String> retVal = list.getRecommendationSentence(tag, 5, 100);
@@ -80,22 +80,4 @@ public class RecommendationController {
 		return currentSentence;
 	}
 	
-	private void initList() {
-		long start = System.currentTimeMillis();
-		list = new RankedRecommendationList();
-		
-		List<Recommendation> all = getAll();
-		for (Recommendation r : all) {
-			String tags[] = r.getTags().split(",");
-			for (String tag : tags) {
-				list.add(tag.trim(), r.getSentence(), r.getRating());
-			}
-		}
-		
-		list.randomizeAndTrim();
-		
-		if (System.currentTimeMillis() - start > 0) {
-			logger.info("initList ms:" + (System.currentTimeMillis() - start));
-		}
-	}
 }

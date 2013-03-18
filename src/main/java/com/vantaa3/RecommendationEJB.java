@@ -62,4 +62,25 @@ public class RecommendationEJB {
     	em.remove(em.find(Recommendation.class, r.getId()));
     }
 
+	public RankedRecommendationList initList() {
+		long start = System.currentTimeMillis();
+		RankedRecommendationList list = new RankedRecommendationList();
+		
+		List<Recommendation> all = loadAllWithTags();
+		for (Recommendation r : all) {
+			String tags[] = r.getTags().split(",");
+			for (String tag : tags) {
+				list.add(tag.trim(), r.getSentence(), r.getRating());
+			}
+		}
+		
+		list.randomizeAndTrim();
+		
+		if (System.currentTimeMillis() - start > 0) {
+			logger.info("initList ms:" + (System.currentTimeMillis() - start));
+		}
+		
+		return list;
+	}
+
 }
