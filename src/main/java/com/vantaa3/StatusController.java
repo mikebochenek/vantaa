@@ -43,6 +43,7 @@ public class StatusController {
 		return draftEJB.loadAll().size();
 	}
 
+	@SuppressWarnings("deprecation")
 	public String getUptime() {
 		return uptime.toGMTString();
 	}
@@ -71,6 +72,7 @@ public class StatusController {
 		
 		list.randomizeAndTrim();
 		
+		logger.finer("getTimeInitList took: " + (System.currentTimeMillis() - start));
 		return (System.currentTimeMillis() - start);
 	}
 }

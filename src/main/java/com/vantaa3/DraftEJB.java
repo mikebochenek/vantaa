@@ -19,6 +19,7 @@ public class DraftEJB {
 	private EntityManager em;
 
     public Draft update(Draft d) {
+    	logger.finer("calling update... " + d);
     	d.setCreateDate(new Date());
     	return em.merge(d);
     }
