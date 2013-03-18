@@ -21,6 +21,9 @@ public class StatusController {
 
 	@EJB
 	private RecommendationEJB recommendationEJB;
+	
+	@EJB
+	private DraftEJB draftEJB;
 
 	private RankedRecommendationList list;
 	
@@ -34,6 +37,10 @@ public class StatusController {
 	
 	public int getTotalListSize() {
 		return recommendationEJB.loadAll().size();
+	}
+	
+	public int getDraftSize() {
+		return draftEJB.loadAll().size();
 	}
 
 	public String getUptime() {
