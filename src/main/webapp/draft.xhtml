@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<h:body>
+
+<ui:composition template="plainlayout.xhtml">
+	<ui:define name="content">
+   
+    <h:dataTable rules="all" value="#{draftListController.drafts}" var="draft">
+    	
+    	<h:column>
+			<f:facet name="header"><h:outputText value="id"/></f:facet>
+			<h:outputText value="#{draft.id}"/>
+		</h:column>
+
+    	<h:column>
+			<f:facet name="header"><h:outputText value="create data"/></f:facet>
+			<h:outputText value="#{draft.createDate}"/>
+		</h:column>
+
+    	<h:column>
+			<f:facet name="header"><h:outputText value="text"/></f:facet>
+			<h:outputText value="#{draft.text}"/>
+		</h:column>
+
+	</h:dataTable>
+
+	</ui:define>
+</ui:composition>
+
+</h:body>
+</html>
