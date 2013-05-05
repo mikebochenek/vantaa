@@ -20,7 +20,7 @@
 			}
 			var _newValLen = 0;
 			$(function(){
-		        CKEDITOR.replace(($('#ckeditorparent'))[0].firstChild.id);
+		        CKEDITOR.replace(($('#ckeditorparent'))[0].firstChild.id, { customConfig: '/js/ckeditor/config.js' } );
 				window.setInterval(autosave, 5000);
 			});
       </script>
