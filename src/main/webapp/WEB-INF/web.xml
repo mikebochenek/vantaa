@@ -25,4 +25,13 @@
         <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
         <param-value>true</param-value>
     </context-param>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error.faces</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error.faces</location>
+	</error-page> 
 </web-app>
