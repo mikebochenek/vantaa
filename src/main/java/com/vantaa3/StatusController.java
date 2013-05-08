@@ -42,6 +42,10 @@ public class StatusController {
 	public int getTagsSize() {
 		return recommendationEJB.initList().getTags().size();
 	}
+	
+	public int getPercentage() {
+		return (getTagsSize() * 100) / getTotalListSize();
+	}
 
 	public int getDraftSize() {
 		return draftEJB.loadAll().size();
