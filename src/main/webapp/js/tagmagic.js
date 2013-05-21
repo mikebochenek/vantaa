@@ -4,7 +4,7 @@ var tm =
 	cSentenceIdx: 0,
 	kids: null,
 	cPage: 0,
-    nMaxTags: 12, //TODO this should get increase to 20 or so..
+    nMaxTags: 12, //TODO this should get increased to 20 or so..
 	
     next_t: function (elem) {
     	if (!elem.firstChild.src.match(/_g.png/gi)) {
@@ -112,5 +112,23 @@ var tm =
     
     unhighlightplace : function() {
     	$('#placetext').css("color", "#2472c3");
+    },
+
+    highlightrandom : function() {
+    	$('#generateRandomId').css("color", "#c1257a");
+    },
+    
+    unhighlightrandom : function() {
+    	$('#generateRandomId').css("color", "#2472c3");
+    },
+
+    generateRandom : function() {
+    	var newTxt = '';
+    	for (i = 0; i < 6; i++) {
+        	var idx = Math.floor(Math.random() * this.kids.length);
+    		grandkids = $(tm.kids[idx]).children();
+    		newTxt += ((i==0) ? '' : '  ') + grandkids[0].firstChild.data;
+    	}
+    	CKEDITOR.instances[($('#ckeditorparent'))[0].firstChild.id].insertText(newTxt);
     }
 };

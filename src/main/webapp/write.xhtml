@@ -33,6 +33,11 @@
             <f:ajax event="click" execute="someData"  listener="#{draftController.save}" />
             </h:commandButton>
          </div>
+         
+         <div style="color:#2472c3;cursor: pointer;" align="right" id="generateRandomId" 
+         	onclick="tm.generateRandom(this); return false;" onmouseover="tm.highlightrandom(); return false;" 
+			onmouseout="tm.unhighlightrandom(); return false;"><b>generate something random...</b></div>
+         
       </h:form>
    </ui:define>
 
