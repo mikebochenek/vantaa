@@ -25,6 +25,12 @@
 			});
       </script>
 
+      <ul class="subnav" style="padding:10px;">
+        <li class="active"><strong><a href="/">Write</a></strong></li>
+        <li><a href="/messages/conversations">Received</a></li>
+        <li><strong><a href="/app/contact">Written</a></strong></li>
+      </ul>
+
       <h:form>
          <ui:include  src="tagmagic.xhtml"/>
          <div id="ckeditorparent"><h:inputTextarea value="#{surveyResponseController.comment}" id="editor1" /></div>
@@ -33,6 +39,8 @@
             <f:ajax event="click" execute="someData"  listener="#{draftController.save}" />
             </h:commandButton>
          </div>
+         
+         <div><h:outputText value="#{xingRecommendationController.one.text}" /></div>
          
       </h:form>
    </ui:define>
