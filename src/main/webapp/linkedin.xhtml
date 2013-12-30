@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+
+<ui:composition template="linkedinlayout.xhtml">
+   <ui:define name="content">
+      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.0.1/ckeditor.js"></script>
+      <script type="text/javascript">
+			function autosave() { 
+				var newVal = CKEDITOR.instances[($('#ckeditorparent'))[0].firstChild.id].getData();
+				($('#somedataparent'))[0].firstChild.value = (newVal);
+				if (newVal.length > _newValLen) {
+					($('#autosavedraft_td'))[0].firstChild.click();
+					_newValLen = newVal.length;
+				}
+			}
+			var _newValLen = 0;
+			$(function(){
+		        CKEDITOR.replace(($('#ckeditorparent'))[0].firstChild.id, { customConfig: '/js/ckeditor/config.js' } );
+				window.setInterval(autosave, 5000);
+			});
+      </script>
+
+      <h:form>
+         <ui:include  src="tagmagic.xhtml"/>
+         <div id="ckeditorparent"><h:inputTextarea value="#{surveyResponseController.comment}" id="editor1" /></div>
+         <div id="somedataparent"><h:inputHidden id="someData" value="#{draftController.comment}" /></div>
+         <div style="display:none" id="autosavedraft_td"><h:commandButton id="savedraftbtn" accesskey="s" value="Save"  >
+            <f:ajax event="click" execute="someData"  listener="#{draftController.save}" />
+            </h:commandButton>
+         </div>
+         
+      </h:form>
+   </ui:define>
+
+</ui:composition>
+	
+</h:body>
+</html>
+
+
