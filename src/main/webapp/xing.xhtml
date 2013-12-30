@@ -26,9 +26,9 @@
       </script>
 
       <ul class="subnav" style="padding:10px;">
-        <li class="active"><strong><a href="/">Write</a></strong></li>
-        <li><a href="/messages/conversations">Received</a></li>
-        <li><strong><a href="/app/contact">Written</a></strong></li>
+        <li class="active"><strong><a href="/">Write New</a></strong></li>
+        <li><a href="/messages/conversations">Received (<h:outputText value="#{xingRecommendationController.receivedRecommendationsCount}" />)</a></li>
+        <li><strong><a href="/app/contact">Written (<h:outputText value="#{xingRecommendationController.writtenRecommendationsCount}" />)</a></strong></li>
       </ul>
 
       <h:form>

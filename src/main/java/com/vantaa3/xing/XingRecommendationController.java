@@ -28,16 +28,24 @@ public class XingRecommendationController {
 		return rec;
 	}
 
+	public int getWrittenRecommendationsCount() {
+		return getWrittenRecommendations().size();
+	}
+	
 	public List<XingRecommendation> getWrittenRecommendations() {
 		if (writtenRecommendations == null) {
-			writtenRecommendations = xingRecEJB.loadByOwner("owner"); //TODO from session or something?
+			writtenRecommendations = xingRecEJB.loadByOwner("mike"); //TODO from session or something?
 		}
 		return writtenRecommendations;
+	}
+	
+	public int getReceivedRecommendationsCount() {
+		return getReceivedRecommendations().size();
 	}
 
 	public List<XingRecommendation> getReceivedRecommendations() {
 		if (receivedRecommendations == null) {
-			receivedRecommendations = xingRecEJB.loadBySubject("subject"); //TODO from session or something?
+			receivedRecommendations = xingRecEJB.loadBySubject("valentin"); //TODO from session or something?
 		}
 		return receivedRecommendations;
 	}
