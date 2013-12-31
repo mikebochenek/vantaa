@@ -11,8 +11,8 @@
 		
 		<title>#{msg.Recommend}</title>
 		<link type="text/css" href="css/style.css" rel="stylesheet" />	
-		<link type="text/css" href="js/jquery-ui-1.8.16.custom/css/flick/jquery-ui-1.8.16.custom.css" rel="stylesheet" />	
 		<link type="text/css" href="https://www.xing.com/css/v/20039/general.min.css" rel="stylesheet" />	
+		<link type="text/css" href="css/xing.css" rel="stylesheet" />	
 
 		<script type="text/javascript" src="js/tagmagic.js"></script>
 		
@@ -22,12 +22,12 @@
  
   <h:body>
 
- <div class="confine" id="content" style="background-color:white;">
-    
+  <div class="confine" id="content" style="background-color:white;">
+    <div id="maincontent">
 	  	<ui:insert name="content" >
 	 		<ui:include src="commoncontent.xhtml" />
 	   	</ui:insert>
-	   	
+	</div>
   </div>
  
   </h:body>
