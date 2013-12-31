@@ -24,7 +24,7 @@ public class TestGSON {
 	 */
 	@Test
 	public void testXing0() throws IOException {
-		getResourceAsStream("xing0.json");
+		readJsonFromFile("xing0.json");
 	}
 	
 	/**
@@ -32,7 +32,7 @@ public class TestGSON {
 	 */
 	@Test
 	public void testXing1() throws IOException {
-		getResourceAsStream("xing1.json");
+		readJsonFromFile("xing1.json");
 	}
 
 	
@@ -42,12 +42,12 @@ public class TestGSON {
 	 */
 	@Test
 	public void testXing2() throws IOException {
-		getResourceAsStream("xing2.json");
+		readJsonFromFile("xing2.json");
 	}
 
 	@Test
 	public void testXing3() throws IOException {
-		getResourceAsStream("xing3.json");
+		readJsonFromFile("xing3.json");
 	}
 
 	/**
@@ -60,15 +60,9 @@ public class TestGSON {
 	 */
 	@Test
 	public void testXing4() throws IOException {
-		InputStream input = getResourceAsStream("xing4.json");
-
-		// http://stackoverflow.com/questions/309424/read-convert-an-inputstream-to-a-string
-		java.util.Scanner s = new java.util.Scanner(input).useDelimiter("\\A");
-		String json = s.hasNext() ? s.next() : "";
-		    
 		Gson gson = new Gson();
 		
-		ContactResponse cr = gson.fromJson(json, ContactResponse.class);   
+		ContactResponse cr = gson.fromJson(readJsonFromFile("xing4.json"), ContactResponse.class);   
 		
 		assertEquals(47, cr.getContacts().getTotal());
 	}
@@ -85,7 +79,14 @@ public class TestGSON {
 		gson.toJson(new Long(10)); // ==> prints 10
 		int[] values = { 1 };
 		gson.toJson(values);       // ==> prints [1]
+	}
+	
+	private String readJsonFromFile(String filename) throws IOException {
+		InputStream input = getResourceAsStream(filename);
 
+		// http://stackoverflow.com/questions/309424/read-convert-an-inputstream-to-a-string
+		java.util.Scanner s = new java.util.Scanner(input).useDelimiter("\\A");
+		return s.hasNext() ? s.next() : "";
 	}
 	
 	/**
