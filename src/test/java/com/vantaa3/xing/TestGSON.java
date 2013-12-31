@@ -1,6 +1,10 @@
+/*
+ * Copyright (c) 2013 Michael Bochenek 
+ */
 package com.vantaa3.xing;
 
 import com.google.gson.Gson;
+import com.vantaa3.xing.api.pojos.ContactResponse;
 
 import static org.junit.Assert.*;
 
@@ -56,7 +60,17 @@ public class TestGSON {
 	 */
 	@Test
 	public void testXing4() throws IOException {
-		getResourceAsStream("xing4.json");
+		InputStream input = getResourceAsStream("xing4.json");
+
+		// http://stackoverflow.com/questions/309424/read-convert-an-inputstream-to-a-string
+		java.util.Scanner s = new java.util.Scanner(input).useDelimiter("\\A");
+		String json = s.hasNext() ? s.next() : "";
+		    
+		Gson gson = new Gson();
+		
+		ContactResponse cr = gson.fromJson(json, ContactResponse.class);   
+		
+		assertEquals(47, cr.getContacts().getTotal());
 	}
 	
 	
