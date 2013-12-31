@@ -4,6 +4,7 @@
 package com.vantaa3.xing;
 
 import com.google.gson.Gson;
+import com.vantaa3.xing.api.pojos.ContactIdsResponse;
 import com.vantaa3.xing.api.pojos.ContactResponse;
 
 import static org.junit.Assert.*;
@@ -42,12 +43,20 @@ public class TestGSON {
 	 */
 	@Test
 	public void testXing2() throws IOException {
-		readJsonFromFile("xing2.json");
+		Gson gson = new Gson();
+		
+		ContactIdsResponse cr = gson.fromJson(readJsonFromFile("xing2.json"), ContactIdsResponse.class);   
+		
+		assertEquals(102, cr.getContact_ids().getItems().length);
 	}
 
 	@Test
 	public void testXing3() throws IOException {
-		readJsonFromFile("xing3.json");
+		Gson gson = new Gson();
+		
+		ContactIdsResponse cr = gson.fromJson(readJsonFromFile("xing3.json"), ContactIdsResponse.class);   
+		
+		assertEquals(3, cr.getContact_ids().getItems().length);
 	}
 
 	/**
