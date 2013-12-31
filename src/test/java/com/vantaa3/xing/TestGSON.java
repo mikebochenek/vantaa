@@ -12,11 +12,54 @@ import org.junit.Test;
 
 public class TestGSON {
 	
+	/**
+	 * Shows a particular user’s profile. The data returned by this call will be checked 
+	 * against and filtered on the basis of the privacy settings of the requested user.
+	 * https://dev.xing.com/docs/get/users/:id
+	 * @throws IOException
+	 */
 	@Test
-	public void test() throws IOException {
+	public void testXing0() throws IOException {
+		getResourceAsStream("xing0.json");
+	}
+	
+	/**
+	 * https://dev.xing.com/docs/get/users/:user_id/contacts
+	 */
+	@Test
+	public void testXing1() throws IOException {
 		getResourceAsStream("xing1.json");
 	}
 
+	
+	/**
+	 * Returns all contact IDs of the current user (for my test user)
+	 * https://dev.xing.com/docs/get/users/me/contact_ids
+	 */
+	@Test
+	public void testXing2() throws IOException {
+		getResourceAsStream("xing2.json");
+	}
+
+	@Test
+	public void testXing3() throws IOException {
+		getResourceAsStream("xing3.json");
+	}
+
+	/**
+	 * Returns the requested user's contacts. The nested user data this call
+	 * returns are the same as the get user details call. You can't request more
+	 * than 100 contacts at once (see limit parameter), but you can perform
+	 * several requests in parallel. If you execute this call with limit=0, it
+	 * will tell you how many contacts the user has without returning any user data. 
+	 * https://dev.xing.com/docs/get/users/:user_id/contacts
+	 */
+	@Test
+	public void testXing4() throws IOException {
+		getResourceAsStream("xing4.json");
+	}
+	
+	
 	/**
 	 * https://sites.google.com/site/gson/gson-user-guide#TOC-Primitives-Examples
 	 */
